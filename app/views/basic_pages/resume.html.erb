@@ -1,0 +1,24 @@
+<div id="resume">
+  <section id="about">
+    <%= render 'about' %>
+  </section>
+
+  <section id="skills">
+    <%= render 'skills' %>
+  </section>
+
+  <section id="experience">
+    <%= render 'experience' %>
+  </section>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    NProgress.start();
+  });
+
+  $(window).load(function() {
+    NProgress.done();
+  });
+</script>
