@@ -1,3 +1,25 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.post-title {
+  font-size: 36px;
+  font-weight: 300;
+  height: auto;
+}
+
+.post-content {
+  resize: none;
+  min-height: 20px;
+  width: 100%;
+}
+
+#posts {
+  .content {
+    padding: 20px 40px;
+  }
+}

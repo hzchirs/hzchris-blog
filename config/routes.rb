@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # root 'basic_pages#about'
   root 'basic_pages#resume'
 
+  namespace :api do
+    resources :posts, except: [:index, :show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

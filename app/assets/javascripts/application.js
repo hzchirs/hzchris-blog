@@ -10,9 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-material-design
 //= require nprogress
+//= require config
+//= require react
+//= require react_ujs
+//= require components
+//= require jquery.autosize
 //= require_tree .
+
+window.marked = require('marked')
+marked.setOptions({
+  sanitize: true,
+  gfm: true,
+  breaks: true
+})

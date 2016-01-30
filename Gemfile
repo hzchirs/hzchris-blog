@@ -27,6 +27,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-material-design'
 gem 'nprogress-rails'
 gem 'react-rails', '~> 1.5.0'
+gem 'browserify-rails', '1.5.0'
+gem 'autosize-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
