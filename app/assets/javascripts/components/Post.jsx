@@ -34,9 +34,8 @@ class Post extends React.Component {
 
     if(content.inEdit) {
       this.simplemde = new SimpleMDE({
-        autofocus: true,
+        autofocus: false,
         spellChecker: false,
-        toolbar: false,
         renderingConfig: {
           codeSyntaxHighlighting: true
         },
