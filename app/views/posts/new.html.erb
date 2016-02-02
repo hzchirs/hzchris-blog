@@ -1,0 +1,21 @@
+<div class="row medium-8 large-7 columns">
+  <div id="posts">
+    <%= form_for @post do |f| %>
+      <%= render 'shared/errors', object: @post %>
+      <%= f.text_field :title, class: 'post-title' %>
+      <%= f.text_area :content, class: 'post-content', id: 'new-post-text' %>
+      <%= f.submit '送出', class: 'success button' %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var simplemde = new SimpleMDE({
+    autofocus: false,
+    spellChecker: false,
+    renderingConfig: {
+      codeSyntaxHighlighting: true
+    },
+    element: document.getElementById('new-post-text')
+  });
+</script>
