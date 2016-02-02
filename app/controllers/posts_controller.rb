@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @post = Post.first
+    if params[:name]
+      @posts = Category.find_by(name: params[:name]).posts
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -16,8 +20,10 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to @post
+    else
+      flash[:info] = "新增失敗"
+      render 'new'
     end
-    render 'new'
   end
 
   private

@@ -24,6 +24,7 @@ class Textarea extends React.Component {
       <textarea name={name}
         id={id}
         value={this.state.value}
+        rows="30"
         className={`form-control ${className}`}
         onChange={this.handleChange}
       />

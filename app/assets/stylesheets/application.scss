@@ -1,10 +1,13 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootstrap-material-design";
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+// @import "bootstrap-material-design";
+@import "_settings";
+@import "foundation_and_overrides.scss";
 @import "basic_pages";
 @import "posts";
-@import "nprogress";
-@import "nprogress-bootstrap";
+@import "yue";
+// @import "nprogress";
+// @import "nprogress-bootstrap";
 
 #nprogress .bar{
   background: #C5CAE9;

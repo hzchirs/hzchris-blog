@@ -13,8 +13,9 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require bootstrap-material-design
+//= require foundation
+//require bootstrap-sprockets
+//require bootstrap-material-design
 //= require nprogress
 //= require config
 //= require react
@@ -29,3 +30,5 @@ marked.setOptions({
   gfm: true,
   breaks: true
 })
+
+$(function(){ $(document).foundation(); });

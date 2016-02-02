@@ -1,87 +1,87 @@
-#resume {
-  h2 {
-    text-align: center;
-  }
-
-  section {
-    margin-bottom: 50px;
-  }
-
-  #about {
-    .content {
-      padding-bottom: 30px;
-    }
-  }
-
-  #skills {
-    .bs-component {
-      background-color: #3f51b5;
-      color: white;
-    }
-    .skill-list {
-      padding: 30px;
-      overflow: hidden;
-
-      ul {
-        padding: 0 50px;
-        width: 50%;
-        float: left;
-
-        li {
-          height: 70px;
-        }
-      }
-    }
-
-    .progress {
-      background: #303F9F;
-      .progress-bar {
-        background: white;
-      }
-    }
-  }
-
-  #tools {
-    .tool-list {
-      padding: 30px;
-      overflow: hidden;
-
-      ul {
-        padding: 0 50px;
-        width: 50%;
-        float: left;
-
-        li {
-          height: 70px;
-        }
-      }
-    }
-
-    .progress {
-
-      .progress-bar {
-        background: #3f51b5;
-      }
-    }
-  }
-
-  padding-top: 110px;
-  .avatar {
-    margin: 0 auto;
-    width: 140px;
-    img {
-      margin-top: -100px;
-      width: 140px;
-    }
-  }
-
-  .intro {
-    margin-top: 20px;
-    text-align: center;
-
-    p {
-      width: 60%;
-      margin: 0 auto;
-    }
-  }
-}
+// #resume {
+//   h2 {
+//     text-align: center;
+//   }
+//
+//   section {
+//     margin-bottom: 50px;
+//   }
+//
+//   #about {
+//     .content {
+//       padding-bottom: 30px;
+//     }
+//   }
+//
+//   #skills {
+//     .bs-component {
+//       background-color: #3f51b5;
+//       color: white;
+//     }
+//     .skill-list {
+//       padding: 30px;
+//       overflow: hidden;
+//
+//       ul {
+//         padding: 0 50px;
+//         width: 50%;
+//         float: left;
+//
+//         li {
+//           height: 70px;
+//         }
+//       }
+//     }
+//
+//     .progress {
+//       background: #303F9F;
+//       .progress-bar {
+//         background: white;
+//       }
+//     }
+//   }
+//
+//   #tools {
+//     .tool-list {
+//       padding: 30px;
+//       overflow: hidden;
+//
+//       ul {
+//         padding: 0 50px;
+//         width: 50%;
+//         float: left;
+//
+//         li {
+//           height: 70px;
+//         }
+//       }
+//     }
+//
+//     .progress {
+//
+//       .progress-bar {
+//         background: #3f51b5;
+//       }
+//     }
+//   }
+//
+//   padding-top: 110px;
+//   .avatar {
+//     margin: 0 auto;
+//     width: 140px;
+//     img {
+//       margin-top: -100px;
+//       width: 140px;
+//     }
+//   }
+//
+//   .intro {
+//     margin-top: 20px;
+//     text-align: center;
+//
+//     p {
+//       width: 60%;
+//       margin: 0 auto;
+//     }
+//   }
+// }

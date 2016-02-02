@@ -2,24 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  font-size: 16px;
-  line-height: 1.8;
+.info {
+  min-height: 30px;
 }
-.post-title {
-  font-size: 36px;
-  font-weight: 300;
-  height: auto;
+.top-bar-title {
+  margin-top: 3px;
 }
 
 .post-content {
-  resize: none;
-  min-height: 20px;
+  // resize: none;
+  min-height: 300px;
   width: 100%;
 }
 
-#posts {
-  .content {
-    padding: 20px 70px;
+.errors {
+  ul {
+    list-style: none !important;
   }
 }

@@ -1,3 +1,5 @@
-<div id="posts">
-  <%= react_component('Post', { post: @post }, {prerender: true}) %>  
+<div class="row medium-8 large-7 columns">
+  <div id="posts">
+    <%= react_component('PostApp', { post: @post }) %>
+  </div>
 </div>

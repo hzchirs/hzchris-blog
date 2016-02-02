@@ -1,5 +1,3 @@
-<div class="container">
-  <div id="posts">
-    <%= react_component('PostApp', { post: @post }) %>
-  </div>
+<div class="row medium-8 large-7 columns">
+  <%= react_component('PostList', { posts: @posts }) %>
 </div>
