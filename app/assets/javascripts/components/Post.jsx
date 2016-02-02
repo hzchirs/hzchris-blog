@@ -16,6 +16,14 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
+    this.simplemde = new SimpleMDE({
+      autofocus: false,
+      spellChecker: false,
+      renderingConfig: {
+        codeSyntaxHighlighting: true
+      },
+      element: document.getElementById(`post-content-${this.state.post.id}`)
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -23,6 +31,7 @@ class Post extends React.Component {
 
     $('html').unbind('click')
     $('html').click( () => {
+      $('.post-content').css('min-height', 'initial')
       if(title.inEdit || content.inEdit) {
         this.handleUpdate()
       }
@@ -84,12 +93,12 @@ class Post extends React.Component {
 
     if(!$.isEmptyObject(newPostData.post)) {
       $.ajax({
-        url: Api.post(post.id),
+        url: Api.posts(post.id),
         method: 'PATCH',
         data: newPostData
       })
-      .done( data => {
-        console.log('ajax')
+      .done( (data, textStatus) => {
+        console.log(textStatus)
         this.simplemde = undefined
         this.setState({
           post: data.post,
@@ -117,6 +126,7 @@ class Post extends React.Component {
 
   onContentClick(e) {
     if(user.role === 'admin') {
+      $('.post-content').css('min-height', $('.post-content').height())
       this.setState({
         content: {
           inEdit: true
@@ -126,8 +136,8 @@ class Post extends React.Component {
   }
 
   renderTitle() {
-    const { post } = this.props
-    if(this.state.title.inEdit) {
+    const { post, title } = this.state
+    if(title.inEdit || post.title === null) {
       return (
         <Input ref="title"
           className="post-title"
@@ -144,13 +154,14 @@ class Post extends React.Component {
   }
 
   renderContent() {
-    const { post } = this.props
-    if(this.state.content.inEdit) {
+    const { post, content } = this.state
+    if(content.inEdit || post.content === null) {
       return (
         <div className="content-text">
           <Textarea ref="content"
             id={`post-content-${this.state.post.id}`}
             className="post-content"
+            style={{height: '1000px'}}
             value={this.state.post.content}
           />
         </div>
