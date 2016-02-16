@@ -1,37 +1,32 @@
 class Post extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      post: props.post,
+    this.initialState = {
       title: {
         inEdit: false
       },
       content: {
         inEdit: false
+      },
+      category: {
+        inEdit: false
       }
     }
+    this.state = this.initialState
 
     this.onTitleClick = this.onTitleClick.bind(this)
     this.onContentClick = this.onContentClick.bind(this)
   }
 
-  componentDidMount() {
-    this.simplemde = new SimpleMDE({
-      autofocus: false,
-      spellChecker: false,
-      renderingConfig: {
-        codeSyntaxHighlighting: true
-      },
-      element: document.getElementById(`post-content-${this.state.post.id}`)
-    });
-  }
-
   componentDidUpdate(prevProps, prevState) {
+    const { post } = this.props
     const { title, content } = this.state
 
     $('html').unbind('click')
     $('html').click( () => {
-      $('.post-content').css('min-height', 'initial')
+      if(this.simplemde && this.simplemde.value() !== '') {
+        $('.post-content').css('min-height', 'initial')
+      }
       if(title.inEdit || content.inEdit) {
         this.handleUpdate()
       }
@@ -48,7 +43,7 @@ class Post extends React.Component {
         renderingConfig: {
           codeSyntaxHighlighting: true
         },
-        element: document.getElementById(`post-content-${this.state.post.id}`)
+        element: document.getElementById(`post-content-${post.id}`)
       });
     }
 
@@ -67,7 +62,8 @@ class Post extends React.Component {
   }
 
   handleUpdate() {
-    const { post } = this.state
+    const { post, updatePost } = this.props
+    const { title, content } = this.state
     const newPostData = { post: {} },
       $postTitle = $('.post-title').val(),
       $postContent = this.simplemde ? this.simplemde.value() : undefined
@@ -75,43 +71,30 @@ class Post extends React.Component {
     if($postTitle !== undefined && $postTitle !== post.title) {
       newPostData.post.title = $postTitle
     } else {
-      this.setState({
-        title: {
-          inEdit: false
-        }
-      })
+      if(title.inEdit) {
+        this.setState({
+          title: {
+            inEdit: false
+          }
+        })
+      }
     }
     if($postContent !== undefined && $postContent !== post.content) {
       newPostData.post.content = $postContent
     } else {
-      this.setState({
-        content: {
-          inEdit: false
-        }
-      })
-    }
-
-    if(!$.isEmptyObject(newPostData.post)) {
-      $.ajax({
-        url: Api.posts(post.id),
-        method: 'PATCH',
-        data: newPostData
-      })
-      .done( (data, textStatus) => {
-        console.log(textStatus)
-        this.simplemde = undefined
+      if(content.inEdit) {
         this.setState({
-          post: data.post,
-          title: {
-            inEdit: false
-          },
           content: {
             inEdit: false
           }
         })
-      })
-      .fail( err => alert('err'))
+      }
     }
+
+    updatePost(post, newPostData)
+    .done( () => {
+      this.setState(this.initialState)
+    })
   }
 
   onTitleClick(e) {
@@ -136,49 +119,69 @@ class Post extends React.Component {
   }
 
   renderTitle() {
-    const { post, title } = this.state
+    const { post } = this.props
+    const { title } = this.state
     if(title.inEdit || post.title === null) {
       return (
         <Input ref="title"
           className="post-title"
-          value={this.state.post.title}
+          value={post.title}
         />
       )
     } else {
       return (
         <span>
-          {this.state.post.title}
+          {post.title}
         </span>
       )
     }
   }
 
   renderContent() {
-    const { post, content } = this.state
+    const { post } = this.props
+    const { content } = this.state
     if(content.inEdit || post.content === null) {
       return (
         <div className="content-text">
           <Textarea ref="content"
-            id={`post-content-${this.state.post.id}`}
+            id={`post-content-${post.id}`}
             className="post-content"
             style={{height: '1000px'}}
-            value={this.state.post.content}
+            value={post.content}
           />
         </div>
       )
     } else {
       return (
-        <span>
-          <p dangerouslySetInnerHTML={this.processContent()}>
-          </p>
+        <span dangerouslySetInnerHTML={this.processContent()}>
         </span>
       )
     }
   }
 
+  renderCategory() {
+    const { post, categories } = this.props
+    const { category } = this.state
+    const postCategoty = categories.filter(category => category.id === post.category_id)[0]
+
+    if(category.inEdit) {
+      return (
+        <select ref="select">
+          {categories.map(category =>
+            <option value={category.id}>
+              {category.name}
+            </option>
+          )}
+        </select>
+      )
+    } else {
+      return postCategoty.name
+    }
+  }
+
   processContent() {
     return {
-      __html: marked(this.state.post.content)
+      __html: marked(this.props.post.content)
     }
   }
 
@@ -192,6 +195,13 @@ class Post extends React.Component {
       <div className="post-content" onClick={this.onContentClick}>
         {this.renderContent()}
       </div>
+      <div className="post-tags">
+        <ul className="menu">
+          <li className="category">
+            {this.renderCategory()}
+          </li>
+        </ul>
+      </div>
       <hr />
     </article>
     )
@@ -199,5 +209,7 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-  post: React.PropTypes.object.isRequired
+  post: React.PropTypes.object.isRequired,
+  categories: React.PropTypes.object.isRequired,
+  updatePost: React.PropTypes.func.isRequired
 }

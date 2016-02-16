@@ -5,6 +5,6 @@
 */
 const Api = {
   posts(post_id) {
-    return `/api/posts/${post_id}`
+    return `/api/posts/${post_id || ''}`
   }
 }

@@ -9,6 +9,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @categories = Category.select(:id, :name)
+
+    if !params[:slug] or @post.slug != params[:slug]
+      redirect_to post_with_slug_url(id: @post.id, slug: @post.slug)
+    end
+
+    set_meta_tags title: @post.title,
+      description: @post.plain_content
   end
 
   def new

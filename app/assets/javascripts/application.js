@@ -31,4 +31,6 @@ marked.setOptions({
   breaks: true
 })
 
+window.removeMd = require('remove-markdown')
+
 $(function(){ $(document).foundation(); });

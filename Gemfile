@@ -30,6 +30,15 @@ gem 'browserify-rails', '1.5.0'
 gem 'autosize-rails'
 gem 'awesome_rails_console'
 
+# markdown process
+gem 'redcarpet'
+
+# seo
+gem 'meta-tags'
+
+# To generate friendly url
+gem 'babosa'
+gem 'unicode'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +51,10 @@ gem 'awesome_rails_console'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+end
+
+group :test do
+  gem 'minitest-reporters'
 end
 
 group :development do

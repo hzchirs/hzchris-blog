@@ -10,17 +10,24 @@ class PostList extends React.Component {
 
   onDeleteClick(post) {
     const { posts } = this.state
-    
-    $.ajax({
-      url: Api.posts(post.id),
-      method: 'DELETE'
-    })
-    .done( data => {
-      this.setState({
-        posts: posts.filter( post => post.id !== data.post.id)
+
+    if(confirm('確定刪除?')) {
+      Rest.posts('DELETE', post)
+      .done( data => {
+        this.setState({
+          posts: posts.filter( post => post.id !== data.post.id)
+        })
       })
-    })
-    .fail( error => alert('Delete failed'))
+      .fail( error => alert('Delete failed'))
+    }
+  }
+
+  renderExcerpt(content) {
+    if(content.length < 300) {
+      return content
+    } else {
+      return `${content.substr(0, 300)}...`
+    }
   }
 
   render() {
@@ -29,11 +36,11 @@ class PostList extends React.Component {
       <div id="post-list">
         {posts.map( post =>
           <div className="post-item" key={post.id}>
-            <a href={`posts/${post.id}`}>
+            <a href={`/posts/${post.id}/${post.slug}`}>
               <div id="posts" className="blog-post">
                 <h2>{post.title}</h2>
                 <p>
-                  {post.content}
+                  {this.renderExcerpt(post.plain_content)}
                 </p>
               </div>
             </a>

@@ -1,11 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyText
+introduction:
+  title: Introduction
+  content: hi, this is introduction
   posted_at: 2015-12-14 00:29:25
 
 two:
   title: MyString
   content: MyText
   posted_at: 2015-12-14 00:29:25
+
+<% 100.times do |n| %>
+post_<%= n %>:
+  title: <%= "Post title_#{n}" %>
+  content: <%= "this is post content #{n}" %>
+  posted_at: <%= Time.now %>
+<% end %>

@@ -13,6 +13,34 @@
   // resize: none;
   min-height: 300px;
   width: 100%;
+
+  a {
+    text-decoration: underline;
+  }
+
+  .content-text {
+    margin-left: -15px;
+  }
+
+  p:first-of-type:first-letter {
+    font-size: 85px;
+    line-height: 0.8;
+    display: block;
+    float: left;
+    font-family: 'Georgia';
+    margin:7px 15px 0 0;
+  }
+
+  blockquote {
+    p:first-of-type:first-letter {
+      font-size: inherit;
+      line-height: inherit;
+      display: inherit;
+      float: inherit;
+      font-family: inherit;
+      margin: inherit;
+    }
+  }
 }
 
 .errors {
