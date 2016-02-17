@@ -38,6 +38,7 @@ class Post extends React.Component {
 
     if(content.inEdit) {
       this.simplemde = new SimpleMDE({
+        toolbar: false,
         autofocus: false,
         spellChecker: false,
         renderingConfig: {
@@ -90,11 +91,12 @@ class Post extends React.Component {
         })
       }
     }
-
-    updatePost(post, newPostData)
-    .done( () => {
-      this.setState(this.initialState)
-    })
+    if(!$.isEmptyObject(newPostData.post)) {
+      updatePost(post, newPostData)
+      .done( () => {
+        this.setState(this.initialState)
+      })
+    }
   }
 
   onTitleClick(e) {
