@@ -4,18 +4,21 @@
       <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
         <span class="menu-icon dark" data-toggle></span>
       </span>
-      <strong>HzChris</strong>
+      <strong>
+        <%= link_to 'HzChris', posts_path %>
+      </strong>
     </div>
     <div id="responsive-menu">
       <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>
-            <%= link_to '理財', categories_path('理財') %>
-          </li>
-          <li>
-            <%= link_to '程式', categories_path('程式') %>
-          </li>
-        </ul>
+        <% cache do %>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <% Category.all.each do |category| %>
+              <li>
+                <%= link_to category.name, categories_path(category.name) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
       <div class="top-bar-right">
         <ul class="menu">
