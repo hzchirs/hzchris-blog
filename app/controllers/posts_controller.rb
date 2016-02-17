@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :edit, :update]
+
   def index
     if params[:name]
       @posts = Category.find_by(name: params[:name]).posts
@@ -34,11 +36,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @post.update(post_params)
+    redirect_to post_with_slug_url(id: @post.id, slug: @post.slug)
+  end
+
   private
+
+  def find_post
+    if params[:id]
+      @post = Post.find(params[:id])
+    else
+      redirect_to :index
+    end
+  end
 
   def post_params
     params.require(:post).permit(
-      :title, :content, :posted_at
+      :title, :content, :category_id, :posted_at
     )
   end
 end

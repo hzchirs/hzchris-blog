@@ -159,25 +159,24 @@ class Post extends React.Component {
     }
   }
 
-  renderCategory() {
-    const { post, categories } = this.props
-    const { category } = this.state
-    const postCategoty = categories.filter(category => category.id === post.category_id)[0]
-
-    if(category.inEdit) {
-      return (
-        <select ref="select">
-          {categories.map(category =>
-            <option value={category.id}>
-              {category.name}
-            </option>
-          )}
-        </select>
-      )
-    } else {
-      return postCategoty.name
-    }
-  }
+  // renderCategory(postCategoty) {
+  //   const { categories } = this.props
+  //   const { category } = this.state
+  //
+  //   if(category.inEdit) {
+  //     return (
+  //       <select ref="select">
+  //         {categories.map(c =>
+  //           <option value={c.id}>
+  //             {c.name}
+  //           </option>
+  //         )}
+  //       </select>
+  //     )
+  //   } else {
+  //     return postCategoty.name
+  //   }
+  // }
 
   processContent() {
     return {
@@ -186,7 +185,9 @@ class Post extends React.Component {
   }
 
   render() {
-    const { post } = this.props
+    const { post, categories } = this.props
+    const postCategoty = categories.filter(c => c.id === post.category_id)[0]
+
     return (
     <article ref="article">
       <h1 onClick={this.onTitleClick}>
@@ -198,7 +199,9 @@ class Post extends React.Component {
       <div className="post-tags">
         <ul className="menu">
           <li className="category">
-            {this.renderCategory()}
+            <a href={`/categories/${postCategoty.name}`}>
+              {postCategoty.name}
+            </a>
           </li>
         </ul>
       </div>
@@ -210,6 +213,6 @@ class Post extends React.Component {
 
 Post.propTypes = {
   post: React.PropTypes.object.isRequired,
-  categories: React.PropTypes.object.isRequired,
+  categories: React.PropTypes.array.isRequired,
   updatePost: React.PropTypes.func.isRequired
 }

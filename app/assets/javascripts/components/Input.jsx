@@ -18,8 +18,9 @@ class Input extends React.Component {
     const { name, className } = this.props
     return (
       <input name={name}
+        type="text"
         value={this.state.value}
-        className={`form-control ${className}`}
+        className={`${className}`}
         onChange={this.handleChange}
       />
     )

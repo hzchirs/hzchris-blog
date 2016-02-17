@@ -9,6 +9,11 @@
   margin-top: 3px;
 }
 
+.post-title {
+  height: 3.5rem;
+  font-size: 2rem;
+}
+
 .post-content {
   // resize: none;
   min-height: 300px;
@@ -23,15 +28,16 @@
   }
 
   p:first-of-type:first-letter {
-    font-size: 85px;
-    line-height: 0.8;
-    display: block;
-    float: left;
-    font-family: 'Georgia';
-    margin:7px 15px 0 0;
+    // font-size: 85px;
+    // line-height: 0.8;
+    // display: block;
+    // float: left;
+    // font-family: 'Georgia';
+    // margin:7px 15px 0 0;
   }
 
   blockquote {
+
     p:first-of-type:first-letter {
       font-size: inherit;
       line-height: inherit;
@@ -39,6 +45,22 @@
       float: inherit;
       font-family: inherit;
       margin: inherit;
+    }
+  }
+}
+
+.post-tags {
+  margin-top: 50px;
+  ul {
+    margin: 0;
+    padding-left: 0;
+    color: #4F4F4F;
+
+    li {
+      a {
+        padding: 6px 15px;
+        border: 1px solid #4F4F4F;
+      }
     }
   }
 }

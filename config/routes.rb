@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'basic_pages#resume'
 
-  resources :posts, except: [:edit]
+  resources :posts
   get '/posts/:id(/:slug)', to: 'posts#show', as: :post_with_slug
 
   get 'categories/:name', to: 'posts#index', as: :categories
