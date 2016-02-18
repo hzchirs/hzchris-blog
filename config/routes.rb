@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'basic_pages#resume'
+  # root 'basic_pages#resume'
+  root 'posts#index'
 
   resources :posts
   get '/posts/:id(/:slug)', to: 'posts#show', as: :post_with_slug
