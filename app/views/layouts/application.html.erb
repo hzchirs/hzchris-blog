@@ -16,14 +16,34 @@
 </head>
 <body class="yue">
   <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
   </script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 
   <%= render 'layouts/header' %>
 
-  <%= yield %>
+  <div class="row medium-8 large-6 columns">
+    <% if notice %>
+      <div class="callout success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+    <div class="callout alert">
+      <%= alert %>
+    </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>

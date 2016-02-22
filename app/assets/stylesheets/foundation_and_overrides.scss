@@ -49,3 +49,11 @@
 //
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+label {
+  font-size: 1rem;
+}
+
+.button {
+  font-weight: bold;
+}
