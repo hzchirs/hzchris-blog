@@ -65,9 +65,11 @@ class Post extends React.Component {
   handleUpdate() {
     const { post, updatePost } = this.props
     const { title, content } = this.state
-    const newPostData = { post: {} },
+    let newPostData = { post: {} },
       $postTitle = $('.post-title').val(),
       $postContent = this.simplemde ? this.simplemde.value() : undefined
+
+      console.log($postContent, post.content)
 
     if($postTitle !== undefined && $postTitle !== post.title) {
       newPostData.post.title = $postTitle
@@ -94,6 +96,7 @@ class Post extends React.Component {
     if(!$.isEmptyObject(newPostData.post)) {
       updatePost(post, newPostData)
       .done( () => {
+        this.simplemde = undefined
         this.setState(this.initialState)
       })
     }
