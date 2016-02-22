@@ -1,12 +1,22 @@
-class PostPolicy
-  attr_reader :user, :post
+class PostPolicy < ApplicationPolicy
+  class Scope
+    attr_reader :user, :scope
 
-  def initialize(user, post)
-    @user = user
-    @post = post
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.published
+      end
+    end
   end
 
   def update?
-    user.admin? or post.owner?(user)
+    user.admin? or user.author?(record)
   end
 end

@@ -4,14 +4,13 @@ class PostsController < ApplicationController
 
   def index
     if params[:name]
-      @posts = Category.find_by(name: params[:name]).posts
+      @posts = policy_scope(Category.find_by(name: params[:name]).posts)
     else
-      @posts = Post.all
+      @posts = policy_scope(Post)
     end
   end
 
   def show
-    @post = Post.find(params[:id])
     @categories = Category.select(:id, :name)
 
     if !params[:slug] or @post.slug != params[:slug]
@@ -50,6 +49,7 @@ class PostsController < ApplicationController
   def find_post
     if params[:id]
       @post = Post.find(params[:id])
+      authorize @post
     else
       redirect_to :index
     end

@@ -3,4 +3,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :posts, foreign_key: "author_id", dependent: :destroy
+
+  def author?(post)
+    self == post.author
+  end
+
+  def admin?
+    self.role == 'admin'
+  end
 end
