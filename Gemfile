@@ -43,6 +43,7 @@ gem 'unicode'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+gem 'pundit'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

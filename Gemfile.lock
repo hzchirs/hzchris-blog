@@ -134,6 +134,8 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -231,6 +233,7 @@ DEPENDENCIES
   minitest-reporters
   nprogress-rails
   pg
+  pundit
   rails (= 4.2.4)
   react-rails (~> 1.5.0)
   redcarpet
