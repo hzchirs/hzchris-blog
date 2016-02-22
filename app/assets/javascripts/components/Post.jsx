@@ -69,8 +69,6 @@ class Post extends React.Component {
       $postTitle = $('.post-title').val(),
       $postContent = this.simplemde ? this.simplemde.value() : undefined
 
-      console.log($postContent, post.content)
-
     if($postTitle !== undefined && $postTitle !== post.title) {
       newPostData.post.title = $postTitle
     } else {
