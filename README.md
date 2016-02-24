@@ -8,6 +8,6 @@ Not ready for production yet.
 
 - [x] friendly url
 
-- [ ] tags
+- [x] authentication & authorization
 
-- [ ] authentication & authorization
+- [ ] tags
