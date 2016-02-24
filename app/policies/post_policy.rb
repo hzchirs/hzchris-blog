@@ -8,15 +8,27 @@ class PostPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.admin?
-        scope.all
+      if user
+        if user.admin?
+          scope.all
+        else
+          user.posts
+        end
       else
         scope.published
       end
     end
   end
 
+  def show?
+    if user
+      user.admin? or user.author?(record)
+    else
+      record.publish?
+    end
+  end
+
   def update?
-    user.admin? or user.author?(record)
+    user.try(:admin?) or user.try(:author?, record)
   end
 end

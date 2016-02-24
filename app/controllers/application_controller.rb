@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :initial_meta_tags
 
   include Pundit
-  after_action :verify_authorized, except: [:index]
-  after_action :verify_policy_scoped, only: [:index]
+  # after_action :verify_authorized, except: [:index]
+  # after_action :verify_policy_scoped, only: [:index]
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

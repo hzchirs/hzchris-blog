@@ -2,6 +2,7 @@
   <%= form_for @post do |f| %>
     <%= render 'shared/errors', object: @post %>
     <%= f.text_field :title, class: 'post-title' %>
+    <%= f.select :state, Post.state.map { |key, value| [value, key] } %>
     <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] } %>
     <%= f.text_area :content, class: 'post-content', id: 'new-post-text' %>
     <%= f.submit '送出', class: 'success button' %>

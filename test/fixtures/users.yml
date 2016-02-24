@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+chris:
+  email: alice@example.com
+  role: admin
+joyce:
+  email: bob@example.com
+  role: normal
+
+<% 50.times do |n| %>
+user_<%= n %>:
+  email: <%= "user_#{n}@example.com" %>
+  role: normal
+<% end %>

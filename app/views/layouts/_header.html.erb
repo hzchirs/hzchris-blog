@@ -24,6 +24,16 @@
         <ul class="menu">
           <li><input type="search" placeholder="Search"></li>
           <li><button type="button" class="button">Search</button></li>
+
+        <% if current_user %>
+          <li>
+            <%= link_to '登出', :destroy_user_session, method: :delete, class: 'alert button' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to '登入', :new_user_session, class: 'success button' %>
+          </li>
+        <% end %>
         </ul>
       </div>
     </div>

@@ -1,18 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-introduction:
-  title: Introduction
+publish:
+  title: Publish Post
+  slug: publish-post
   content: hi, this is introduction
+  state: publish
   posted_at: 2015-12-14 00:29:25
 
-two:
+private:
+  title: Introduction
+  slug: introduction
+  content: hi, this is introduction
+  state: private
+  posted_at: 2015-12-14 00:29:25
+
+draft:
   title: MyString
+  slug: mystring
   content: MyText
+  state: draft
   posted_at: 2015-12-14 00:29:25
 
-<% 100.times do |n| %>
+<% 50.times do |n| %>
 post_<%= n %>:
   title: <%= "Post title_#{n}" %>
+  slug: <%= "post-title-#{n}" %>
   content: <%= "this is post content #{n}" %>
+  state: publish
   posted_at: <%= Time.now %>
 <% end %>
