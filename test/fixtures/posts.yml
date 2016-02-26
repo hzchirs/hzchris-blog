@@ -6,6 +6,7 @@ publish:
   content: hi, this is introduction
   state: publish
   posted_at: 2015-12-14 00:29:25
+  author: chris
 
 private:
   title: Introduction
@@ -13,6 +14,7 @@ private:
   content: hi, this is introduction
   state: private
   posted_at: 2015-12-14 00:29:25
+  author: joyce
 
 draft:
   title: MyString
@@ -20,6 +22,7 @@ draft:
   content: MyText
   state: draft
   posted_at: 2015-12-14 00:29:25
+  author: jane
 
 <% 50.times do |n| %>
 post_<%= n %>:
@@ -28,4 +31,5 @@ post_<%= n %>:
   content: <%= "this is post content #{n}" %>
   state: publish
   posted_at: <%= Time.now %>
+  author: <%= "user_#{n}" %>
 <% end %>

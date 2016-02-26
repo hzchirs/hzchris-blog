@@ -57,6 +57,7 @@ end
 
 group :test do
   gem 'minitest-reporters'
+  gem 'minitest-rails-capybara'
 end
 
 group :development do

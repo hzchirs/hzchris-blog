@@ -7,8 +7,13 @@
 chris:
   email: alice@example.com
   role: admin
+
 joyce:
   email: bob@example.com
+  role: normal
+
+jane:
+  email: jane@example.com
   role: normal
 
 <% 50.times do |n| %>
