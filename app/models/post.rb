@@ -26,8 +26,10 @@ class Post < ActiveRecord::Base
 
   require 'redcarpet/render_strip'
   def generate_excerpt
-    md = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
-    self.plain_content = md.render(self.content)
+    unless content.nil?
+      md = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+      self.plain_content = md.render(self.content)
+    end
   end
 
   def publish?

@@ -56,8 +56,18 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest-reporters'
-  gem 'minitest-rails-capybara'
+  # gem 'minitest-reporters'
+  # gem 'minitest-rails-capybara'
+  gem 'rspec-rails', '~> 3.0'
+
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality
+  gem 'shoulda-matchers', '~> 3.1'
+
+  # SimpleCov is a code coverage analysis tool for Ruby
+  gem 'simplecov', :require => false
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :development do
