@@ -30,6 +30,10 @@ gem 'browserify-rails', '1.5.0'
 gem 'autosize-rails'
 gem 'awesome_rails_console'
 
+# Ahoy provides a solid foundation to track visits and events in Ruby, JavaScript, and native apps.
+gem 'ahoy_matey'
+gem "browser", "~> 1.1"
+
 # markdown process
 gem 'redcarpet'
 
@@ -44,6 +48,12 @@ gem 'unicode'
 
 gem 'devise'
 gem 'pundit'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -53,16 +63,17 @@ gem 'pundit'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :test do
   # gem 'minitest-reporters'
   # gem 'minitest-rails-capybara'
-  gem 'rspec-rails', '~> 3.0'
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality
   gem 'shoulda-matchers', '~> 3.1'
-
+  gem 'selenium-webdriver'
   # SimpleCov is a code coverage analysis tool for Ruby
   gem 'simplecov', :require => false
   gem 'factory_girl_rails'
@@ -76,4 +87,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # This is a small gem which causes rails console to open pry.
+  gem 'pry-rails'
 end

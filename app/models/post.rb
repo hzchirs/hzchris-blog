@@ -7,10 +7,9 @@ class Post < ActiveRecord::Base
   belongs_to :category, counter_cache: true
   belongs_to :author, class_name: "User"
 
-  default_scope { order(posted_at: :desc) }
+  default_scope { order(updated_at: :desc) }
   scope :published, -> { where(state: 'publish') }
-  scope :financial, -> { Category.find_by(name: '理財').posts }
-  scope :programming, -> { Category.find_by(name: '程式').posts }
+  scope :with_category, -> (category_name) { includes(:category).all.select { |post| post.category.name == category_name } }
 
   def self.state
     {

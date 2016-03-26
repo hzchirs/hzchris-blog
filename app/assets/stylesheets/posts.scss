@@ -2,16 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.CodeMirror {
+  border: none;
+  padding: 0;
+
+  pre {
+    line-height: 1.7;
+    margin-right: 0;
+    padding: 0 0;
+  }
+}
+
+.CodeMirror-lines {
+  padding: 0;
+}
+
 .info {
   min-height: 30px;
 }
 .top-bar-title {
   margin-top: 3px;
-}
-
-.post-title {
-  height: 3.5rem;
-  font-size: 2rem;
 }
 
 .post-content {
@@ -63,14 +73,18 @@
 
 .posts {
   .post-title {
-    margin-left: -9px;
-    margin-top: -7px;
-    margin-bottom: -5px;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    font-size: 2rem;
+    height: 44px;
+  }
+  .post-title:focus {
+    box-shadow: none;
   }
 
   .content-text {
-    margin-left: -15px;
-    margin-top: -16px;
+
   }
 }
 

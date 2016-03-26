@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require ahoy
 //= require foundation
 //require bootstrap-sprockets
 //require bootstrap-material-design

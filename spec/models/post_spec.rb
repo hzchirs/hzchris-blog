@@ -6,6 +6,12 @@ RSpec.describe Post, type: :model do
   it { should validate_presence_of :title }
   it { should validate_presence_of :state }
 
+  describe "#title" do
+    context "when blank" do
+      
+    end
+  end
+
   context "when save" do
     subject(:post) { Post.new({ title: '123', state: 'publish' }) }
 

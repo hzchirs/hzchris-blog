@@ -218,7 +218,7 @@
   word-wrap: break-word;
 }
 
-.yue pre {
+/*.yue pre {
   margin: 1.64em 0;
   padding: 7px;
   border: none;
@@ -230,7 +230,7 @@
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   color: #4c4c4c;
   background-color: #f9f9f7;
-}
+}*/
 
 .yue pre code,
 .yue pre tt {

@@ -40,7 +40,8 @@ class Post extends React.Component {
       this.simplemde = new SimpleMDE({
         toolbar: false,
         autofocus: false,
-        spellChecker: false,
+        spellChecker: true,
+        status: false,
         renderingConfig: {
           codeSyntaxHighlighting: true
         },
