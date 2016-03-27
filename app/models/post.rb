@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   validates :title, presence: true
-  validates :state, presence: true
+  validates :status, presence: true
 
   before_save :generate_slug, :generate_excerpt
 
@@ -8,10 +8,10 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: "User"
 
   default_scope { order(updated_at: :desc) }
-  scope :published, -> { where(state: 'publish') }
+  scope :published, -> { where(status: 'publish') }
   scope :with_category, -> (category_name) { includes(:category).all.select { |post| post.category.name == category_name } }
 
-  def self.state
+  def self.status
     {
       draft: '草稿',
       publish: '公開',
@@ -32,14 +32,14 @@ class Post < ActiveRecord::Base
   end
 
   def publish?
-    self.state == 'publish'
+    self.status == 'publish'
   end
 
   def draft?
-    self.state == 'draft'
+    self.status == 'draft'
   end
 
   def private?
-    self.state == 'private'
+    self.status == 'private'
   end
 end

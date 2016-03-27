@@ -11,8 +11,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @categories = Category.select(:id, :name)
-
     if !params[:slug] or @post.slug != params[:slug]
       redirect_to post_with_slug_url(id: @post.id, slug: @post.slug)
     end

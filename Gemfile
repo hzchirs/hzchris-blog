@@ -65,6 +65,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
 end
 
 group :test do
@@ -76,7 +77,6 @@ group :test do
   gem 'selenium-webdriver'
   # SimpleCov is a code coverage analysis tool for Ruby
   gem 'simplecov', :require => false
-  gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
 end
