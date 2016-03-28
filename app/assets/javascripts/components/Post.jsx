@@ -24,6 +24,10 @@ class Post extends React.Component {
 
     $('html').unbind('click')
     $('html').click( () => {
+      if(getSelectedText().toString() !== '') {
+        return false;
+      }
+
       if(this.simplemde && this.simplemde.value() !== '') {
         $('.post-content').css('min-height', 'initial')
       }
