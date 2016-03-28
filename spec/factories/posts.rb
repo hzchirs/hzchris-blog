@@ -4,7 +4,7 @@ FactoryGirl.define do
     category
 
     title 'Introduction'
-    content 'hi, this is introduction'
+    content '#hi, this is introduction'
     posted_at { Time.now }
 
     trait :publish do

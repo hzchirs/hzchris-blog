@@ -14,21 +14,20 @@ RSpec.describe PostsController, type: :controller do
 
     it "assigns @posts" do
       get :index
-
-      expect(assigns(:posts).size).to eq(2)
+      expect(assigns(:posts).size).to eq 2
     end
 
     it "can not see other user's private post" do
-      get :index
       create_list :post, 2, :private, author: other_user
+      get :index
 
       expect(Post.count).to eq(4)
-      expect(assigns(:posts).size).to eq(2)
+      expect(assigns(:posts).size).to eq 2
     end
 
     it "has status :success" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status :success
     end
   end
 
@@ -40,14 +39,29 @@ RSpec.describe PostsController, type: :controller do
 
     it "assigns @post" do
       get :show, id: @post
-
       expect(assigns(:post)).to eq(@post)
     end
 
-    it "redirct if path without slug" do
+    it "redirect to :post_with_slug when path without slug" do
       get :show, id: @post
-
       expect(response).to redirect_to(post_with_slug_url(id: @post.id, slug: @post.slug))
+    end
+
+    it "has status :success when path with slug" do
+      get :show, id: @post, slug: @post.slug
+      expect(response).to have_http_status :success
+    end
+  end
+
+  describe "GET #new" do
+    it "redirect to sign_in page when not signed in" do
+      get :new
+      expect(response).to redirect_to :new_user_session
+    end
+
+    it "has status :success when signed in" do
+      sign_in normal_user
+      expect(response).to have_http_status :success
     end
   end
 end
